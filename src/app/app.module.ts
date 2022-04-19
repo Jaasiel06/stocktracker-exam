@@ -4,9 +4,10 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LayoutModule } from './layout/layout.module';
-import { SentimentModule } from './sentiment/sentiment.module';
-import { StocksModule } from './stocks/stocks.module';
+import { StocksModule } from './modules/stocks/stocks.module';
+
+import { SentimentModule } from './modules/sentiment/sentiment.module';
+import { LayoutModule } from './shared/layout/layout.module';
 
 @NgModule({
   declarations: [

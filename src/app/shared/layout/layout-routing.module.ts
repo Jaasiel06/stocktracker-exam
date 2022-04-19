@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SentimentIndexComponent } from '../sentiment/sentiment-index/sentiment-index.component';
-import { StocksIndexComponent } from '../stocks/stocks-index/stocks-index.component';
-import { NavbarComponent } from './navbar/navbar.component';
+import { SentimentIndexComponent } from 'src/app/modules/sentiment/sentiment-index/sentiment-index.component';
+import { StocksIndexComponent } from 'src/app/modules/stocks/stocks-index/stocks-index.component';
+
 
 
 export const LayoutRoutes: Routes = [
