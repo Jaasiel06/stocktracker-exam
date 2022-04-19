@@ -1,20 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { SentimentIndexComponent } from './sentiment-index/sentiment-index.component';
+import { WelcomeComponent } from './welcome/welcome.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: SentimentIndexComponent
-  },
-  {
-    path: 'index',
-    component: SentimentIndexComponent
+    component: WelcomeComponent
   }
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class SentimentRoutingModule { }
+export class HomeRoutingModule { }

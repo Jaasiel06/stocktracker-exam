@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { LayoutRoutes } from './layout-routing.module';
+
 
 import { RouterModule } from '@angular/router';
-import { NavbarComponent } from './navbar/navbar.component';
+import { NavbarComponent } from '../components/navbar/navbar.component';
+import { AppROUTES } from './app-routes';
+
 
 
 @NgModule({
@@ -13,8 +15,8 @@ import { NavbarComponent } from './navbar/navbar.component';
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(LayoutRoutes),
+    RouterModule.forChild(AppROUTES),
 
   ]
 })
-export class LayoutModule { }
+export class AppRoutesModule { }
