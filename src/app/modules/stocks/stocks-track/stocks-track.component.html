@@ -1,2 +1,17 @@
-<p>stocks-track works!</p>
-<router-outlet></router-outlet>
+<div class="card m-3">
+    <div class="card-body">
+        <h6 class="card-title">Enter the symbol of a stock to track (i.e. AAPL, TSLA, GOOGL)</h6>
+        <form [formGroup]="stockTrackForm" class="row g-3 mt-2">
+            <div class="col-auto">
+                <label for="inputPassword2" class="visually-hidden">Password</label>
+                <input type="text" [id]="stockSymbol" formControlName="stockSymbol" class="form-control"
+                    id="stocksymbol-input" placeholder="Stock Symbol">
+            </div>
+            <div class="col-auto">
+                <a class="btn btn-primary mb-3" (click)="trackStock()"><i class="bi bi-graph-up-arrow"></i> Track
+                    Stock</a>
+            </div>
+
+        </form>
+    </div>
+</div>

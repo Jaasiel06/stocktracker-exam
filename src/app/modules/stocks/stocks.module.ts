@@ -6,6 +6,7 @@ import { RouterModule } from '@angular/router';
 import { StocksIndexComponent } from './stocks-index/stocks-index.component';
 import { StocksListComponent } from './stocks-list/stocks-list.component';
 import { StocksTrackComponent } from './stocks-track/stocks-track.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -20,7 +21,8 @@ import { StocksTrackComponent } from './stocks-track/stocks-track.component';
       { path: '', component: StocksIndexComponent }
     ]),
     CommonModule,
-    StocksRoutingModule
+    StocksRoutingModule,
+    ReactiveFormsModule
   ],
   exports: [
     StocksTrackComponent, StocksListComponent, StocksIndexComponent
