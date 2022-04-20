@@ -7,6 +7,8 @@ import { StocksIndexComponent } from './stocks-index/stocks-index.component';
 import { StocksListComponent } from './stocks-list/stocks-list.component';
 import { StocksTrackComponent } from './stocks-track/stocks-track.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastNoAnimationModule, ToastrModule } from 'ngx-toastr';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 
