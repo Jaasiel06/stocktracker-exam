@@ -4,14 +4,24 @@
         <form [formGroup]="stockTrackForm" class="row g-3 mt-2">
             <div class="col-auto">
                 <label for="inputPassword2" class="visually-hidden">Password</label>
-                <input type="text" [id]="stockSymbol" formControlName="stockSymbol" class="form-control"
-                    id="stocksymbol-input" placeholder="Stock Symbol">
+                <input class="form-control" id="stockSymbolId" type="text" placeholder="Stock Symbol (required)"
+                    formControlName="stockSymbol" [ngClass]="{'is-invalid': (stockTrackForm.get('stockSymbol')?.touched ||
+                    stockTrackForm.get('stockSymbol')?.dirty) &&
+                                               !stockTrackForm.get('stockSymbol')?.valid }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="stockTrackForm.get('stockSymbol')?.errors?.['required']">
+                        Please enter Stock Symbol.
+                    </span>
+                    <span *ngIf="stockTrackForm.get('stockSymbol')?.errors?.['maxlength']">
+                        The stock symbol cannot be longer than 5 characters.
+                    </span>
+                </span>
             </div>
             <div class="col-auto">
-                <a class="btn btn-primary mb-3" (click)="trackStock()"><i class="bi bi-graph-up-arrow"></i> Track
-                    Stock</a>
+                <button (click)="trackStock()" [disabled]="!stockTrackForm.valid" class="btn btn-success mb-3">
+                    <i class="bi bi-graph-up-arrow"></i> Track Stock
+                </button>
             </div>
-
         </form>
     </div>
 </div>
