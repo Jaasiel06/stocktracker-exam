@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-stocks-track',
@@ -8,23 +8,18 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 })
 
 
-
 export class StocksTrackComponent implements OnInit {
-
-  constructor() { }
-
-  stockTrackForm = new FormGroup({
-    stockSymbol: new FormControl('', [
-      Validators.required,
-      Validators.maxLength(15)
-    ])
-  });
+  stockTrackForm!: FormGroup;
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit(): void {
+    this.stockTrackForm = this.fb.group({
+      stockSymbol: ['', [Validators.required, Validators.maxLength(5)]],
+    });
   }
 
-  get stockSymbol() { return this.stockTrackForm.get('stockSymbol'); }
   trackStock() {
-    alert(1)
+    // TODO: save data in localstorage
   }
+
 }
