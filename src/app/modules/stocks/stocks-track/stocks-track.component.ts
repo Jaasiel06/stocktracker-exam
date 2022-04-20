@@ -20,18 +20,14 @@ export class StocksTrackComponent implements OnInit {
   }
 
   trackStock() {
-
     let key: string = this.stockTrackForm.value.stockSymbol;
     let symbol: string = this.stockTrackForm.value.stockSymbol;
-
     try {
       this.localStorageService.setItem(key, symbol)
-      this.toastr.success(symbol + " Stocks Tracked successfuly")
+      this.toastr.success(symbol + " Stocks are being tracked successfully...")
     } catch (error) {
       this.toastr.error('Something went wrong, please try again.')
     }
-
   }
-
 
 }
