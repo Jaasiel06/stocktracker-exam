@@ -1,4 +1,4 @@
 export const environment = {
-  "API_URL": "https://finnhub.io/",
+  "API_URL": "https://finnhub.io",
   production: true
 };

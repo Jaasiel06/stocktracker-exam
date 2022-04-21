@@ -38,6 +38,8 @@ export class RestApiService {
         apiParms = apiParms.append(key.toString(), item[key].toString());
       }
     }
+    let test = this.baseUrl + '/' + dataApiRootMap[api] + '/' + Method + '' + apiParms;
+
     return this.http.get<T>(this.baseUrl + '/' + dataApiRootMap[api] + '/' + Method + '' + apiParms);
   }
 }
