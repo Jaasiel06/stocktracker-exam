@@ -13,8 +13,8 @@ import { StocksService } from '../services/stocks.service';
 
 export class StocksTrackComponent implements OnInit {
   stockTrackForm!: FormGroup;
-  stockQuotes: StockQuote[] | undefined;
-  constructor(private fb: FormBuilder, public stockService: StocksService, private localStorageService: LocalstorageService, private toastr: ToastrService
+
+  constructor(private fb: FormBuilder, private stockService: StocksService, private localStorageService: LocalstorageService, private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -24,19 +24,17 @@ export class StocksTrackComponent implements OnInit {
   }
 
   trackStock() {
+
     let key: string = this.stockTrackForm.value.stockSymbol;
     let symbol: string = this.stockTrackForm.value.stockSymbol;
+
     try {
       this.localStorageService.setItem(key, symbol)
-      this.stockService.getStocksQuote(symbol).subscribe(res => {
-        this.stockQuotes = res;
-        console.log(this.stockQuotes);
-        this.toastr.success(symbol + " Stocks are being tracked...")
-      });
-
+      this.stockService.getStocksQuote(symbol)
     } catch (error) {
       this.toastr.error('Something went wrong, please try again.')
     }
+
   }
 
 }

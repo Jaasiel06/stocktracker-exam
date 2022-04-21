@@ -4,5 +4,5 @@ export enum DataApi {
 }
 export const dataApiRootMap: { [api: string]: string } = {
     "1": "api/v1/quote",
-    "2": "docs/api/symbol-search",
+    "2": "api/v1/search",
 };

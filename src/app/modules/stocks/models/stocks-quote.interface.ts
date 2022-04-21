@@ -9,7 +9,9 @@ export interface StockQuote {
     o: number;
     pc: number;
 
-    //Response Attributes:
+}
+
+ //Response Attributes:
     // c
     // Current price
 
@@ -30,4 +32,3 @@ export interface StockQuote {
 
     // pc
     // Previous close price
-}

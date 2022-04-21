@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { StockQuote } from '../models/stocks-quote.interface';
+import { StocksService } from '../services/stocks.service';
 
 @Component({
   selector: 'app-stocks-list',
@@ -7,11 +10,25 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StocksListComponent implements OnInit {
 
-  constructor() { }
+
+  stocksQuotes: StockQuote[] = [];
+  subscription: Subscription = new Subscription();
+
+  constructor(private stockService: StocksService) { }
 
   ngOnInit(): void {
+    this.subscribeToStocksQuotes();
   }
 
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
+  }
+
+  subscribeToStocksQuotes() {
+    this.stockService.stockQuote$.subscribe(res => {
+      this.stocksQuotes.push(res)
+    })
+  }
 
 
 
