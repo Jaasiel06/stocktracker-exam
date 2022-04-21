@@ -28,7 +28,8 @@ export class LocalstorageService {
     localStorage.setItem(key, JSON.stringify(item))
   }
 
-  getWithExpiry(key: string) {
+
+  getWithExpiry(key: string): string | null {
 
     const itemStr = localStorage.getItem(key)
 

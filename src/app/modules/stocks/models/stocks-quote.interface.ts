@@ -1,6 +1,7 @@
 
 
 export interface StockQuote {
+    symbol: string;
     c: number;
     d: number;
     dp: number;

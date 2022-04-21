@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Subscription } from 'rxjs';
+import { LocalstorageService } from 'src/app/shared/services/localstorage/localstorage.service';
 import { StockQuote } from '../models/stocks-quote.interface';
 import { StocksService } from '../services/stocks.service';
 
@@ -10,11 +12,10 @@ import { StocksService } from '../services/stocks.service';
 })
 export class StocksListComponent implements OnInit {
 
-
   stocksQuotes: StockQuote[] = [];
   subscription: Subscription = new Subscription();
 
-  constructor(private stockService: StocksService) { }
+  constructor(private stockService: StocksService, private localStorageService: LocalstorageService, private toastr: ToastrService) { }
 
   ngOnInit(): void {
     this.subscribeToStocksQuotes();
@@ -30,6 +31,22 @@ export class StocksListComponent implements OnInit {
     })
   }
 
-
+  unTrackStock(symbol: string) {
+    //remove from stock quote list and reset localstorage
+    this.stocksQuotes = this.stocksQuotes.filter(x => x.symbol != symbol);
+    let localStorageKey: string = "STOCKSSYMBOLSTRACKED";
+    let stocksTracked: string[] = [];
+    let stocksTrackedLocalstorage: string | null = this.localStorageService.getWithExpiry(localStorageKey);
+    if (stocksTrackedLocalstorage) {
+      stocksTracked = JSON.parse(stocksTrackedLocalstorage);
+    } else {
+      return;
+    }
+    let idx = stocksTracked.indexOf(symbol);
+    if (idx != -1) { stocksTracked.splice(idx, 1) }
+    let symbolsString = JSON.stringify(stocksTracked);
+    this.localStorageService.setItem(localStorageKey, symbolsString)
+    this.toastr.success('Stock symbol being un-tracked')
+  }
 
 }

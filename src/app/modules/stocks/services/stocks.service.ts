@@ -15,15 +15,16 @@ export class StocksService {
   stockQuote$ = this._stocksQuoteSource.asObservable();
 
 
-
   constructor(private restService: RestApiService) { }
 
   async getStocksQuote(symbol: string) {
     this.restService.get<StockQuote>(DataApi.QUOTE, '?', { symbol: symbol, token: this.token }).subscribe(res => {
+      res.symbol = symbol;
       this._stocksQuoteSource.next(res);
       this.stocksQuotes.push(res);
     });
   }
+
 
   async getSymbols(symbol: string) {
     this.restService.get<StockQuote>(DataApi.SYMBOLSEARCH, '?', { q: symbol, token: this.token }).subscribe(res => {
