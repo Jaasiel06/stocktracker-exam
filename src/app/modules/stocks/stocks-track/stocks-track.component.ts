@@ -39,6 +39,8 @@ export class StocksTrackComponent implements OnInit {
     //get Localstorage for the symbols
     let localStorageKey: string = "STOCKSSYMBOLSTRACKED";
     let stocksTracked: string[] = [];
+    let symbolInput: string = this.stockTrackForm.value.stockSymbol;
+    symbolInput = symbolInput.toUpperCase();
     try {
 
       //if localstorage exist, them parse it to string[]
@@ -48,20 +50,19 @@ export class StocksTrackComponent implements OnInit {
       }
 
       //validate duplicate symbol
-      if (stocksTracked.filter(x => x == this.stockTrackForm.value.stockSymbol).length > 0) {
-        this.toastr.error('This Stock Symbol: ' + this.stockTrackForm.value.stockSymbol + ' already in the list.')
+      if (stocksTracked.filter(x => x == symbolInput).length > 0) {
+        this.toastr.error('This Stock Symbol: ' + symbolInput + ' already in the list.')
         return;
       }
-
-      stocksTracked.push(this.stockTrackForm.value.stockSymbol)
+      stocksTracked.push(symbolInput)
 
       //stringify stocks and save it to localStorage
       let symbolsString = JSON.stringify(stocksTracked);
       this.localStorageService.setItem(localStorageKey, symbolsString)
-      this.getStockQuotesFromApi([this.stockTrackForm.value.stockSymbol])
+      this.getStockQuotesFromApi([symbolInput])
       this.toastr.success('Stock symbol being tracked')
     } catch (error) {
-      this.toastr.error('Something went wrong with Stock Symbol ' + this.stockTrackForm.value.stockSymbol + ', please try again.')
+      this.toastr.error('Something went wrong with Stock Symbol ' + symbolInput + ', please try again.')
     }
   }
 

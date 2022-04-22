@@ -1,16 +1,26 @@
 <div *ngFor="let stock of stocksQuotes">
     <div class="card m-3">
         <div class="card-body">
-            <span role="button" class="float-end" (click)="unTrackStock(stock.symbol)"><i class="bi bi-x-lg"></i></span>
+            <span role="button" class="float-end" (click)="unTrackStock(stock.symbol)"><i
+                    class="bi bi-x-lg"></i></span>
+
             <h4 class="card-title text-bold">Tesla Inc ({{stock.symbol}})</h4>
+
             <div class="row">
                 <div class="col-3">
-                    <label for="">Change today: <span *ngIf="stock.dp > 0">+</span>{{stock.dp}}</label>
+                    <label for="">Change today: <span
+                            *ngIf="stock.dp > 0">+</span>{{stock.dp}}</label>
                 </div>
                 <div class="col-3">
                     <label for="">Opening price: {{stock.o | currency}}</label>
                 </div>
+                <div class="col-2">
+                    <h1 *ngIf="stock.dp < 0" class="text-danger"><i class="bi bi-arrow-up"></i></h1>
+                    <h1 *ngIf="stock.dp >= 0" class="text-success"><i class="bi bi-arrow-down"></i>
+                    </h1>
+                </div>
             </div>
+
             <div class="row mt-2">
                 <div class="col-3">
                     <label for="">Current price: {{stock.c | currency}}</label>

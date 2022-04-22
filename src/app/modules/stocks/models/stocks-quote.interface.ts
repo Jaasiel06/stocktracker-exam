@@ -9,27 +9,26 @@ export interface StockQuote {
     i: number;
     o: number;
     pc: number;
-
 }
 
- //Response Attributes:
-    // c
-    // Current price
+//  Response Attributes Description:
+//     c
+//     Current price
 
-    // d
-    // Change
+//     d
+//     Change
 
-    // dp
-    // Percent change
+//     dp
+//     Percent change
 
-    // h
-    // High price of the day
+//     h
+//     High price of the day
 
-    // l
-    // Low price of the day
+//     l
+//     Low price of the day
 
-    // o
-    // Open price of the day
+//     o
+//     Open price of the day
 
-    // pc
-    // Previous close price
+//     pc
+//     Previous close price

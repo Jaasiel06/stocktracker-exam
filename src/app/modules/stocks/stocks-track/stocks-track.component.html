@@ -1,11 +1,13 @@
 <div class="card m-3">
     <div class="card-body">
-        <h6 class="card-title">Enter the symbol of a stock to track (i.e. AAPL, TSLA, GOOGL)</h6>
+        <h6 class="card-title">Enter the symbol of
+            a stock to track (i.e. AAPL, TSLA,
+            GOOGL)</h6>
         <form [formGroup]="stockTrackForm" class="row g-3 mt-2">
             <div class="col-auto">
-                <label for="inputPassword2" class="visually-hidden">Password</label>
-                <input class="form-control" id="stockSymbolId" type="text" placeholder="Stock Symbol (required)"
-                    formControlName="stockSymbol" [ngClass]="{'is-invalid': (stockTrackForm.get('stockSymbol')?.touched ||
+                <input class="form-control" id="stockSymbolId" type="text"
+                    [value]="stockTrackForm.value.stockSymbol | uppercase"
+                    placeholder="Stock Symbol (required)" formControlName="stockSymbol" [ngClass]="{'is-invalid': (stockTrackForm.get('stockSymbol')?.touched ||
                     stockTrackForm.get('stockSymbol')?.dirty) &&
                                                !stockTrackForm.get('stockSymbol')?.valid }" />
                 <span class="invalid-feedback">
@@ -13,13 +15,16 @@
                         Please enter Stock Symbol.
                     </span>
                     <span *ngIf="stockTrackForm.get('stockSymbol')?.errors?.['maxlength']">
-                        The stock symbol cannot be longer than 5 characters.
+                        The stock symbol cannot be
+                        longer than 5 characters.
                     </span>
                 </span>
             </div>
             <div class="col-auto">
-                <button (click)="trackStock()" [disabled]="!stockTrackForm.valid" class="btn btn-success mb-3">
-                    <i class="bi bi-graph-up-arrow"></i> Track Stock
+                <button (click)="trackStock()" [disabled]="!stockTrackForm.valid"
+                    class="btn btn-success mb-3">
+                    <i class="bi bi-graph-up-arrow"></i>
+                    Track Stock
                 </button>
             </div>
         </form>

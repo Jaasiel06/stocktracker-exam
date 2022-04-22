@@ -46,7 +46,7 @@ export class StocksListComponent implements OnInit {
     if (idx != -1) { stocksTracked.splice(idx, 1) }
     let symbolsString = JSON.stringify(stocksTracked);
     this.localStorageService.setItem(localStorageKey, symbolsString)
-    this.toastr.success('Stock symbol being un-tracked')
+    this.toastr.success('Stock symbol being untracked')
   }
 
 }
