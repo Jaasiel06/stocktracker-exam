@@ -19,12 +19,10 @@ export class StocksService {
   constructor(private restService: RestApiService) { }
 
   async getStocksQuote(symbol: string) {
-    this.restService.get<StockQuote>(DataApi.QUOTE, '?', { symbol: symbol, token: this.token }).subscribe(res => {
+    this.restService.get<StockQuote>(DataApi.QUOTE, '?', { symbol: symbol, token: this.token }).subscribe(async res => {
       res.symbol = symbol;
       try {
-        this.getCompanyProfile(symbol).then(company => {
-          res.companyProfile = company;
-        })
+        res.companyProfile = await this.getCompanyProfile(symbol)
       } catch (error) {
         console.log(error);
       }
