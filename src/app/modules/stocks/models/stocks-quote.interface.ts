@@ -2,6 +2,7 @@ import { CompanyProfile } from "./company-profile.interface";
 
 
 export interface StockQuote {
+    [x: string]: Promise<CompanyProfile | undefined>;
     symbol: string;
     c: number;
     d: number;
