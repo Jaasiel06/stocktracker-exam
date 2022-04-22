@@ -1,8 +1,11 @@
+import { CompanyProfile } from "./company-profile.interface";
+
 export interface stockSymbol {
     description: string;
     displaySymbol: string;
     symbol: string;
     type: string;
+
 }
 
 // //Example of symbole AAPL

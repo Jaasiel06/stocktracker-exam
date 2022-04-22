@@ -1,3 +1,4 @@
+import { CompanyProfile } from "./company-profile.interface";
 
 
 export interface StockQuote {
@@ -9,6 +10,7 @@ export interface StockQuote {
     i: number;
     o: number;
     pc: number;
+    companyProfile: CompanyProfile | undefined
 }
 
 //  Response Attributes Description:
