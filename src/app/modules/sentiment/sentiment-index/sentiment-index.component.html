@@ -1,9 +1,28 @@
-<div class="col-md-5">
-    <p>sentiment-index works!</p>
-    <div *ngFor="let s of sentiments">
-        <label for="">{{s.month}}</label>
+<div class="container row">
+    <div class="card">
+        <div class="card-body">
+            <h4 class="card-title text-bold row">{{StockInputs.companyName}}
+                ({{StockInputs.symbol}})
+            </h4>
+            <div class="row">
+                <div class="col-3 mb-2 row" *ngFor="let s of sentiments">
+                    <ul class="list-group col-6">
+                        <span> {{s.year +'-'+ s.month | date: 'MMMM' | uppercase}}</span>
+                        <span>Change: {{s.change | number}}</span>
+                        <span>MSPR: {{s.mspr | number:'1.2-2'}}</span>
+                    </ul>
+                    <div class="col-6 bor">
+                        <h1 *ngIf="s.change < 0" class="text-danger"><i
+                                class=" bi bi-arrow-down"></i>
+                        </h1>
+                        <h1 *ngIf="s.change >= 0" class="text-success"><i
+                                class="bi bi-arrow-up"></i>
+                        </h1>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <button class="btn btn-success" routerLink="/stocks"><i class="bi bi-arrow-left"></i> Back to
-        list of
-        stocks</button>
+    <button class="btn btn-success mt-2 col-4" routerLink="/stocks"><i class="bi bi-arrow-left"></i>
+        Back to list of stocks</button>
 </div>

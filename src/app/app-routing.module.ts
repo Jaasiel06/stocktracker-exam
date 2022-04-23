@@ -6,7 +6,6 @@ import { NavbarComponent } from './shared/components/navbar/navbar.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 
-
 const routes: Routes = [
   {
     path: '',
