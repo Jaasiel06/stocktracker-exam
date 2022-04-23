@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, subscribeOn, Subscription } from 'rxjs';
 import { DataApi } from 'src/app/shared/services/api/data-api.enum';
 import { RestApiService } from 'src/app/shared/services/api/rest-api.service';
 import { environment } from 'src/environments/environment';
@@ -14,9 +14,13 @@ export class StocksService {
   stocksQuotes: StockQuote[] = [];
   private _stocksQuoteSource: Subject<StockQuote> = new Subject<StockQuote>();
   stockQuote$ = this._stocksQuoteSource.asObservable();
-
+  subscription: Subscription = new Subscription();
 
   constructor(private restService: RestApiService) { }
+
+  ngOnDestroy() {
+    this.subscription.unsubscribe()
+  }
 
   async getStocksQuote(symbol: string) {
     this.restService.get<StockQuote>(DataApi.QUOTE, '?', { symbol: symbol, token: this.token }).subscribe(async res => {

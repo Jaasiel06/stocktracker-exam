@@ -77,14 +77,5 @@ export class StocksTrackComponent implements OnInit {
     }
   }
 
-  getCompanyProfileFromApi(stockSymbol: string) {
-    try {
-      this.stockService.getStocksQuote(stockSymbol)
-    } catch (error) {
-      this.toastr.error('Something went wrong with Stock Symbol ' + stockSymbol + ', please try again.')
-    }
-  }
-
-
 
 }
