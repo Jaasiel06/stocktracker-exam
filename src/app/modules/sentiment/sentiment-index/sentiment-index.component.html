@@ -1,5 +1,9 @@
 <div class="col-md-5">
     <p>sentiment-index works!</p>
-    <button class="btn btn-success" routerLink="/stocks"><i class="bi bi-arrow-left"></i> Back to list of
+    <div *ngFor="let s of sentiments">
+        <label for="">{{s.month}}</label>
+    </div>
+    <button class="btn btn-success" routerLink="/stocks"><i class="bi bi-arrow-left"></i> Back to
+        list of
         stocks</button>
 </div>
