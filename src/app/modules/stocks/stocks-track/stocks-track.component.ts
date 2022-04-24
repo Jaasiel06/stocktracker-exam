@@ -2,7 +2,6 @@ import { Component, ErrorHandler, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { LocalstorageService } from 'src/app/shared/services/localstorage/localstorage.service';
-import { StockQuote } from '../models/stocks-quote.interface';
 import { StocksService } from '../services/stocks.service';
 @Component({
   selector: 'app-stocks-track',
@@ -42,7 +41,6 @@ export class StocksTrackComponent implements OnInit {
     let symbolInput: string = this.stockTrackForm.value.stockSymbol;
     symbolInput = symbolInput.toUpperCase();
     try {
-
       //if localstorage exist, them parse it to string[]
       let stocksTrackedLocalstorage: string | null = this.localStorageService.getWithExpiry(localStorageKey);
       if (stocksTrackedLocalstorage) {
@@ -67,6 +65,7 @@ export class StocksTrackComponent implements OnInit {
   }
 
   getStockQuotesFromApi(stockSymbols: string[]) {
+
     for (let index = 0; index < stockSymbols.length; index++) {
       const symbol = stockSymbols[index];
       try {
@@ -76,6 +75,5 @@ export class StocksTrackComponent implements OnInit {
       }
     }
   }
-
 
 }

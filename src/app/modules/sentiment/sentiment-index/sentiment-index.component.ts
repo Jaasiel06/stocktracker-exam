@@ -24,7 +24,8 @@ export class SentimentIndexComponent implements OnInit {
   StockInputs: StockInputs;
   subscription: Subscription = new Subscription();
 
-  constructor(private route: ActivatedRoute, private ref: ChangeDetectorRef, private toastr: ToastrService, private sentimentService: SentimentService, private datepice: DatePipe) {
+  constructor(private route: ActivatedRoute, private ref: ChangeDetectorRef, private toastr: ToastrService,
+    private sentimentService: SentimentService, private datepice: DatePipe) {
     this.StockInputs = { companyName: '', symbol: '' };
   }
 
